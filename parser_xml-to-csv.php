@@ -6,17 +6,16 @@ $output_path = '';   //директория сохранения CSV файла,
 //создаем в переменной $parse объект по классу XmlToCsv. Т.е. В $parse хранится вся инстукция(значения) класса XmlToCsv
 $parse = new XmlToCsv;
 $fields = $parse->parsing($input); //кладём в переменную-массив файл xml
-$csv = $parse->generate_csv($fields, $output_path); //присваиваем переменной созданный csv файл
+$csv = $parse->generateCsv($fields, $output_path); //присваиваем переменной созданный csv файл
+
 //создаем класс, для создания общей инструкции
 class XmlToCsv
 {
+
 	//объявляем глобальную область видимости для функции
 	public function parsing($xml_source)
 	{
-
-
 		//заголовок csv
-
 		//          asin - для сопоставления ключей входного и выходного массива. ASIN - название столбца.
 		$fields[0]['name'] = 'name';
 		$fields[0]['sku'] = 'sku';
@@ -84,7 +83,7 @@ class XmlToCsv
 		return $fields;
 	}
 
-	public function generate_csv($data, $output)
+	public function generateCsv($data, $output)
 	{
 
 		//$date = date("Y-m-d"); если требуется дата в имени
